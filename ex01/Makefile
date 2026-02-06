@@ -6,17 +6,17 @@
 #    By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/05 18:34:00 by macoulib          #+#    #+#              #
-#    Updated: 2026/02/05 18:35:38 by macoulib         ###   ########.fr        #
+#    Updated: 2026/02/06 15:31:38 by macoulib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = Span_
+NAME = RPN
 CX = c++
 FX = -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR = src
-SRCS =  main.cpp Span.cpp
+SRCS =  main.cpp RPN.cpp
 OBJ_DIR = obj
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

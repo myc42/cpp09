@@ -6,7 +6,13 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:04 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/05 18:34:05 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/06 15:30:01 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once 
+
+#include <exception>
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
