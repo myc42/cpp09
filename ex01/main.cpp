@@ -6,15 +6,12 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:33:57 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/06 17:14:39 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/07 12:36:00 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-#include <sstream>
-#include <string>
-#include <cctype>
-#include <stack>
+
  bool errorHandling(std::string av)
 {
      /*Expression vide → erreur.  Moins de deux nombres quand on rencontre un opérateur → erreur. 
@@ -28,7 +25,6 @@
 }
 int main(int ac, char **av)
 {
-    (void)av;
      std::stack<double> st ;
     try 
     {

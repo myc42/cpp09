@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:33:51 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/06 14:54:50 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/06 14:57:52 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-void reorgDateAndValue(const std::string& line,
+void reorgDB(const std::string& line,
                        std::map<std::string, double>& btc)
 {
     size_t pos = line.find(',');
@@ -52,7 +52,7 @@ int main(int ac, char **av)
             
             if (line.empty())
                 continue;
-            reorgDateAndValue(line, btcBD);
+            reorgDB(line, btcBD);
         }
        
         std::ifstream inputfd(av[1]);
@@ -103,10 +103,6 @@ int main(int ac, char **av)
             double Valresult = value * it->second ;
             std::cout << dateStr << " => " << value << " = " << Valresult << std::endl;
         }
-      
-        
-
-        
     }
     catch (const std::exception &e) {
         std::cerr << "ERROR: " << e.what() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:04 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/06 15:30:01 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/07 12:34:47 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,3 +16,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <sstream>
+#include <string>
+#include <cctype>
+#include <stack>
