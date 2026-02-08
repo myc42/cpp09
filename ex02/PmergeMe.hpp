@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:16 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 17:22:50 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:38:25 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <vector>
 #include <cstdlib>
 #include <deque>
+#include <ctime>
 
 class IntError : public std::exception
  {

@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:02 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 17:50:13 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:13:10 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void RNP::functionPr(std::string av)
      std::string token;
      while (iss >> token) { // lit chaque token séparé par espace
             if(!errorHandling(token)){
-                throw ErrorExcp();
+                 throw ErrorExcp();
+            }
+               
             if(token != "+" &&   token != "-"  &&  token != "/" && token != "*" )
                   st.push(atof(token.c_str())) ;
            else{
@@ -65,11 +67,12 @@ void RNP::functionPr(std::string av)
                  st.pop();
                  st.push( secondx / firstx );
             }  
-              }
+              
        }
-       if (!st.empty()) {
-        std::cout << "Résultat : " << st.top() << std::endl;
-       }
+       
         
     }
+    if (!st.empty()) {
+         std::cout << st.top() << std::endl;
+       }
 }

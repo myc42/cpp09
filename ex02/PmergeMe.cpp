@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:13 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 17:35:29 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/08 19:46:05 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,12 +173,34 @@ std::vector <int>   PmergeMe::fordJohnsonSortVec ( std::vector <int> &bigtemp )
 
    void  PmergeMe::fordJohnsonSort()
    {
-        
+        std::cout << "Before: ";
+        for (size_t i = 0; i < _vec.size(); ++i)
+            std::cout << _vec[i] << " ";
+        std::cout << std::endl;
+        // time variables 
+        std::clock_t	start, end;
+        double duration_deq , duration_vec;
+        //deq
+        start = std::clock();
         std::deque <int>  deq =  fordJohnsonSortDeq(_deq);
+        end = std::clock();
+        duration_deq = double(end - start) / CLOCKS_PER_SEC;
+        //vec
+        start = std::clock();
         std::vector <int>  vec =   fordJohnsonSortVec(_vec);
+        end = std::clock();
+        duration_vec = double(end - start) / CLOCKS_PER_SEC;
+        // Affichage
+        std::cout << "After: ";
+        for (size_t i = 0; i < vec.size(); ++i)
+            std::cout << vec[i] << " ";
+        std::cout << std::endl;
+
+        std::cout << "Time to process a range of " << deq.size()
+          << " elements with std::deque : " << duration_deq << " us" << std::endl;
+
+        std::cout << "Time to process a range of " << vec.size()
+          << " elements with std::vector : " << duration_vec << " us" << std::endl;
         
-        for (std::vector <int>::iterator  it = vec.begin(); it != vec.end(); ++it)
-        {
-             std::cout << *it << " ";
-        }
+        
    }
