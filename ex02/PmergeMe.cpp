@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:13 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 19:46:05 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/09 19:24:44 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,6 @@
 
 /* Exemple simple (8 éléments)
 
-Supposons la séquence :
-[8, 3, 7, 1, 6, 2, 5, 4]
-
-Étape 1 : Création des paires
-
-Paires : (8,3), (7,1), (6,2), (5,4)
-
-Après tri dans la paire : (3,8), (1,7), (2,6), (4,5)
-
-Étape 2 : Récupérer les grands
-
-Grands : [8,7,6,5] → trier → [5,6,7,8]
-
-Étape 3 : Insérer les petits
-
-Petits : [3,1,2,4] → insérer un par un dans [5,6,7,8] à la bonne position
-
-Résultat : [1,2,3,4,5,6,7,8]
-
-Tout est trié, comparaisons minimisées.
 
 Étape 1 : Pairing
 
@@ -125,6 +105,7 @@ std::vector <int>   PmergeMe::fordJohnsonSortVec ( std::vector <int> &bigtemp )
 
      for (size_t i = 0; i < small.size(); ++i)
      {
+       
         std::vector<int>::iterator pos = std::lower_bound(big.begin(), big.end(), small[i]);
         big.insert(pos, small[i]);
      }
@@ -184,12 +165,12 @@ std::vector <int>   PmergeMe::fordJohnsonSortVec ( std::vector <int> &bigtemp )
         start = std::clock();
         std::deque <int>  deq =  fordJohnsonSortDeq(_deq);
         end = std::clock();
-        duration_deq = double(end - start) / CLOCKS_PER_SEC;
+        duration_deq = double(end - start) * 1000.0 / CLOCKS_PER_SEC;
         //vec
         start = std::clock();
         std::vector <int>  vec =   fordJohnsonSortVec(_vec);
         end = std::clock();
-        duration_vec = double(end - start) / CLOCKS_PER_SEC;
+        duration_vec = double(end - start)  * 1000.0 / CLOCKS_PER_SEC;
         // Affichage
         std::cout << "After: ";
         for (size_t i = 0; i < vec.size(); ++i)
@@ -202,5 +183,25 @@ std::vector <int>   PmergeMe::fordJohnsonSortVec ( std::vector <int> &bigtemp )
         std::cout << "Time to process a range of " << vec.size()
           << " elements with std::vector : " << duration_vec << " us" << std::endl;
         
-        
    }
+
+   //cano
+
+   PmergeMe::PmergeMe( PmergeMe &other) : _stock(other._stock), _vec(other._vec), _deq(other._deq) 
+   {
+    
+   }     
+   PmergeMe &PmergeMe::operator=( PmergeMe &other)
+   {
+    if (this != &other) {  
+            _stock = other._stock;
+            _vec   = other._vec;
+            _deq   = other._deq;
+        }
+        return *this;
+   }
+
+   const char *PmergeMe::IntError::what() const throw()
+{
+     return "Error \n";};  
+    
