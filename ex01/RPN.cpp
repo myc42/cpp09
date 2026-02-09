@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:34:02 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 19:13:10 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/09 17:22:40 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ bool RNP::errorHandling(std::string av)
     return false ;
 }
 
+const char *RNP::ErrorExcp::what() const throw()
+{ return "Error ";};
+
 void RNP::functionPr(std::string av)
 {
      std::istringstream iss(av);
      std::string token;
-     while (iss >> token) { // lit chaque token séparé par espace
+     //l’opérateur d’extraction
+     while (iss >> token) { 
             if(!errorHandling(token)){
                  throw ErrorExcp();
             }
@@ -76,3 +80,16 @@ void RNP::functionPr(std::string av)
          std::cout << st.top() << std::endl;
        }
 }
+
+// cano
+
+RNP::RNP (RNP &other)
+    : st(other.st) {}
+
+RNP &RNP::operator=( RNP &other) {
+    if (this != &other) {
+        st = other.st; 
+    }
+    return *this;
+}
+

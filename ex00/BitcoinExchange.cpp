@@ -6,14 +6,24 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:33:46 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 16:38:25 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/09 19:38:36 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "BitcoinExchange.hpp"
+#include <iomanip>
 
+Btc::Btc():value(0){};
 
+Btc::~Btc() {
+    _fd.close();
+    _inputfd.close();
+}
+const char *Btc::CantNotOpenFile::what() const throw()
+{
+    return "Cant not open file !";};  
+     
 void Btc::reorgDB(const std::string& line)
 {
     size_t pos = line.find(',');
@@ -76,8 +86,8 @@ void Btc::reorgDB(const std::string& line)
                 continue;
             }
             /*itérateur pointant sur la première clé qui n’est pas inférieure à key. Si la clé exacte n’existe pas, elle pointe sur la prochaine clé supérieure. Si toutes les clés sont inférieures à key, elle retourne btcBD.end().*/
-            
-             std::map<std::string, double>::iterator it = btcBD.lower_bound(dateStr);
+            //lexicographique
+            std::map<std::string, double>::iterator it = btcBD.lower_bound(dateStr);
             if (it == btcBD.end() || it->first != dateStr)
             {
                 if (it == btcBD.begin())  //La clé recherchée est inférieure ou égale à la plus petite clé.
@@ -91,7 +101,24 @@ void Btc::reorgDB(const std::string& line)
                 }
             }
             //it->second la valeur associée à cette clé
-            double Valresult = value * it->second ;
-            std::cout << dateStr << " => " << value << " = " << Valresult << std::endl;
+            double Valresult = (value * it->second );
+            std::cout << dateStr << " => " << value << " = " <<std::fixed <<  std::setprecision(2) << Valresult << std::endl;
         }
   }
+
+Btc::Btc( Btc &other) : btcBD(other.btcBD) , line(other.line) ,value(other.value)
+{
+    
+}
+
+ Btc &Btc::operator=( Btc &other)
+ {
+    if (this != &other) {
+      btcBD = other.btcBD;
+      line = other.line ;
+      value = other.value;
+    }
+    return *this;
+}
+
+

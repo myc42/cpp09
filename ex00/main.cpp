@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 18:33:51 by macoulib          #+#    #+#             */
-/*   Updated: 2026/02/08 16:39:20 by macoulib         ###   ########.fr       */
+/*   Updated: 2026/02/09 17:20:35 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 int main(int ac, char **av)
 {
      try {
+        if(ac == 1){
+             std::cerr << "Error: could not open file.\n";
+            return 1;
+        }
             if (ac != 2) {
              std::cerr << "ERROR: only one argument accepted\n";
             return 1;
